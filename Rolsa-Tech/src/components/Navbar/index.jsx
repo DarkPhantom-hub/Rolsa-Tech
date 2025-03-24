@@ -18,8 +18,8 @@ const Navbar = () => {
         :""
       }
       <Logo/>
-      <div className="box nav__tabs">
-        <div className="icon__container cancel__btn"  >
+      <div className={`box nav__tabs ${open ? 'visible':''}`}>
+        <div className="icon__container cancel__btn" onClick={()=>setOpen(!open)}>
           <FaTimes/>
         </div>
         {
