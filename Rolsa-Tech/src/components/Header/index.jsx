@@ -13,7 +13,7 @@ const Header = () => {
                     <span className="g-text"> Green Energy</span>
                 </h1>
                 <p className="text__muted">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sed temporibus vero. Dolorem amet quae dolorum recusandae, accusantium impedit officiis dolor saepe corrupti magnam hic, sit optio, non deleniti cumque.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sed temporibus vero. Dolorem amet quae dolorum recusandae, accusantium impedit officiis dolor saepe corrupti magnam hic, sit optio, non deleniti cumque cumque.
                 </p>
                 <div className="buttons__container">
                     <Link to='services' className='btn'>Our Services</Link>
