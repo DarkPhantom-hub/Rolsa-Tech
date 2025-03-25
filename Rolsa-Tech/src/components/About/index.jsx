@@ -13,7 +13,7 @@ const About = () => {
             </div>
             <div className="column">
                 <h3 className="sub__title">With 5+ years Experience</h3>
-                <h1>
+                <h1 className='sub__title'>
                     Turning Your <span className='g-text'>Vision</span> into 
                     reality by focusing on the setup
                 </h1>
