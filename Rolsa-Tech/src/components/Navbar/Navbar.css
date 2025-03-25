@@ -10,6 +10,9 @@
     padding: 20px;
 }
 
+.navbar.active {
+    background: var(--color-ui-secondary);
+}
 .navbar .box,
 .navbar .nav__tabs {
     display: flex;
@@ -92,3 +95,8 @@
     }
 }
 
+@media (max-width:500px) {
+    .navbar .contact__btn {
+        display: none;
+    }
+}

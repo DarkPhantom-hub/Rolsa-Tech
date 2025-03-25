@@ -1,5 +1,5 @@
 export {default as solar__skyscraper} from "./solar-skyscraper.png";
-export {default as company__photo} from "./company_photo.jpeg";
+export {default as company__photo} from "./company_photo.png";
 export {default as panel} from "./panel.jpeg";
 export {default as turbine} from "./turbine.jpeg";
 export {default as batteries} from "./batteries.jpeg";

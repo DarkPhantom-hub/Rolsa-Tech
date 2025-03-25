@@ -1,0 +1,47 @@
+#about .container {
+    display: grid;
+    grid-template-columns: 400px auto;
+    align-items: stretch;
+    gap: 30px;
+}
+
+#about .company__photo {
+    border-radius: var(--radius-2);
+    overflow: hidden;
+    max-width: 400px;
+    margin: auto;
+}
+
+#about .company__photo:hover img {
+    transform: scale(1.2)
+}
+
+#about .sub__title {
+    margin: 10px 0;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+
+#about .group .row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    background: var(--color-ui-secoondary);
+    border-radius: var(--radius-2);
+    transition: var(--transition);
+}
+
+#about .group .row:hover {
+    background: var(--color-ui-variant);
+}
+
+#about .group .row .icon__container {
+    background-color: transparent;
+}
+
+#about .group .row:hover .icon__container {
+    transform: scale();
+}
