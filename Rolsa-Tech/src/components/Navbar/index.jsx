@@ -55,7 +55,7 @@ const Navbar = () => {
         }
       </div>
       <div className="box">
-        <Link to='contact' className='btn contact__btn'>Sign Up</Link>
+        <Link href='/register' to='contact' className='btn contact__btn'>Sign Up</Link>
         <div 
         className='icon__container menu__btn'
         onClick={()=>setOpen(!open)}
