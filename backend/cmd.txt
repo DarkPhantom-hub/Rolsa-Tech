@@ -1,3 +1,0 @@
-npx express-generator
-
-npm install -g express-generator
