@@ -146,13 +146,7 @@ export const projects = [
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Magni debitis expedita dolor`,
   },
-  {
-    title:"Electric cars charging station",
-    image: "https://autovista24.autovistagroup.com/wp-content/uploads/sites/5/2021/09/GettyImages-1325838855-e1631019789721.jpg",
-    category: "Charging Station",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-    Magni debitis expedita dolor`,
-  },
+ 
 ];
 
 export const faq = [
