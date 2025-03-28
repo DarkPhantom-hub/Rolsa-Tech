@@ -80,6 +80,7 @@ const Navbar = () => {
           <RiMenu3Fill />
         </div>
       </div>
+      
     </nav>
   );
 };

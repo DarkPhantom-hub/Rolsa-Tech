@@ -39,7 +39,7 @@ export const services = [
 
 export const teams = [
   {
-    name:"James Brook",
+    name:"Kendrick Lamar",
     title:"Technician",
     profile:member1,
     social:[
@@ -50,7 +50,7 @@ export const teams = [
     ]
   },
   {
-    name:"Dexter morgan",
+    name:"Walter White",
     title:"Technician",
     profile:member2,
     social:[
@@ -61,7 +61,7 @@ export const teams = [
     ]
   },
   {
-    name:"Hinnibal Lecter",
+    name:"LeBron James",
     title:"Technician",
     profile:member3,
     social:[
