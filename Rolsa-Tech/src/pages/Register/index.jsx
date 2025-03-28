@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 import Logo from '../../components/Logo'; // Import the Logo component
-import LeftImage from '../../assets/left-image.png';  // Import the PNG image (replace with your image path)
+import LeftImage from '../../assets/left-image.png';  // Import the PNG image
 
 const Register = () => {
+  const navigate = useNavigate(); // Use navigate for redirection
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,52 +14,42 @@ const Register = () => {
     confirmPassword: '',
   });
 
-  const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value.trim(), // Trim spaces to prevent issues
     });
   };
 
   const validateForm = () => {
     let valid = true;
-    let errors = { ...errors };
+    let errors = {};
 
     if (!formData.name) {
       errors.name = 'Name is required';
       valid = false;
-    } else {
-      errors.name = '';
     }
 
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,6}$/;
     if (!formData.email || !emailPattern.test(formData.email)) {
       errors.email = 'Invalid email address';
       valid = false;
-    } else {
-      errors.email = '';
     }
 
     if (!formData.password) {
       errors.password = 'Password is required';
       valid = false;
-    } else {
-      errors.password = '';
+    } else if (formData.password.length < 6) {
+      errors.password = 'Password must be at least 6 characters';
+      valid = false;
     }
 
     if (formData.password !== formData.confirmPassword) {
       errors.confirmPassword = 'Passwords do not match';
       valid = false;
-    } else {
-      errors.confirmPassword = '';
     }
 
     setErrors(errors);
@@ -69,8 +61,7 @@ const Register = () => {
 
     if (validateForm()) {
       console.log('Registration successful:', formData);
-      // Redirect to the login page after successful registration
-      window.location.href = '/login';
+      navigate('/login'); // Redirect to login page after successful registration
     }
   };
 
@@ -81,7 +72,7 @@ const Register = () => {
       </div>
       <div className="register-form-container">
         <div className="logo-container">
-          <Logo /> {/* Logo at the top */}
+          <Logo />
         </div>
         <h2 className="register-title">Create Account</h2>
         <form onSubmit={handleSubmit} className="register-form">

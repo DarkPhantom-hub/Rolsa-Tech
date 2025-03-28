@@ -6,26 +6,32 @@ import About from './components/About';
 import Achievement from './components/Achievement';
 import Services from './components/Services';
 import Teams from './components/Teams';
-import Project from './components/Project'
+import Project from './components/Project';
 import Contact from './components/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
+const Layout = ({ children }) => (
+  <>
+    <Navbar />
+    {children}
+  </>
+);
+
 const App = () => {
   return (
     <Router>
       <Routes>
-        {/* If you're on Register or Login, don't show Navbar */}
+        {/* Routes without Navbar */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        
-        {/* For other routes, show the Navbar */}
+
+        {/* Routes with Navbar */}
         <Route
           path="/"
           element={
-            <>
-              <Navbar />
+            <Layout>
               <Header />
               <Achievement />
               <About />
@@ -33,10 +39,17 @@ const App = () => {
               <Teams />
               <Project />
               <Contact />
-            </>
+            </Layout>
           }
         />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Layout>
+              <Dashboard />
+            </Layout>
+          }
+        />
       </Routes>
     </Router>
   );
