@@ -127,6 +127,34 @@ export const projects = [
     description:`Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Magni debitis expedita dolor`,
   },
+  {
+    title:"Electric cars charging station",
+    image: "https://i0.wp.com/calmatters.org/wp-content/uploads/2020/10/electric-vehicle-charging-stations.jpg",
+    category: "Charging Station",
+    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Magni debitis expedita dolor`,
+  },
+  {
+    title:"Electric cars charging station",
+    image: "https://th.bing.com/th/id/OIP.ve4ZBC00S2I7wU3uVIm47wHaEK?rs=1&pid=ImgDetMain",
+    category: "Charging Station",
+    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Magni debitis expedita dolor`,
+  },
+  {
+    title:"Electric cars charging station",
+    image: "https://www.motorbiscuit.com/wp-content/uploads/2021/08/Electric-Car-Charging-Stations.jpg",
+    category: "Charging Station",
+    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Magni debitis expedita dolor`,
+  },
+  {
+    title:"Electric cars charging station",
+    image: "https://autovista24.autovistagroup.com/wp-content/uploads/sites/5/2021/09/GettyImages-1325838855-e1631019789721.jpg",
+    category: "Charging Station",
+    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Magni debitis expedita dolor`,
+  },
 ];
 
 export const faq = [

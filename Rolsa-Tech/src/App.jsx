@@ -6,6 +6,7 @@ import About from './components/About';
 import Achievement from './components/Achievement';
 import Services from './components/Services';
 import Teams from './components/Teams';
+import Project from './components/Project'
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -29,6 +30,7 @@ const App = () => {
               <About />
               <Services />
               <Teams />
+              <Project />
             </>
           }
         />
