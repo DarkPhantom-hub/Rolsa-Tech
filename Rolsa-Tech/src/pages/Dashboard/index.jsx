@@ -29,7 +29,7 @@ const Dashboard = () => {
       default:
         return (
           <div className="content">
-            <h2>Welcome to Your Dashboard</h2>
+            <h1>Welcome to Your Dashboard</h1>
             <div className="bills-overview">
               <div className="bill-card" onClick={() => setActiveSection('gas')}>
                 <FaGasPump className="icon" />
