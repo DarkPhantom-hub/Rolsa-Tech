@@ -49,11 +49,7 @@ const App = () => {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Layout>
                 <Dashboard />
-                <Booking />
-                <CarbonCalculator />
-              </Layout>
             </PrivateRoute>
           }
         />

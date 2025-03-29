@@ -1,0 +1,136 @@
+/* Dashboard Container */
+.dashboard-container {
+    min-height: 100vh;
+    display: flex;
+    height: 100vh;
+    background: #f4f4f9;
+  }
+  
+  /* Sidebar Navigation */
+  .sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar button {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px; /* Add spacing between buttons */
+}
+  
+  .sidebar button:hover {
+    background: #34495e;
+  }
+  
+  .sidebar .logout {
+    margin-top: auto;
+    background: #e74c3c;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .sidebar .logout:hover {
+    background: #c0392b;
+  }
+  
+  /* Main Dashboard Content */
+  .dashboard-content {
+    flex-grow: 1;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Dashboard Title */
+.dashboard-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+  /* Bills Overview */
+  .bills-overview {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .bill-card {
+    flex: 1;
+    padding: 20px;
+    background: rgb(75, 226, 58);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .bill-card:hover {
+    transform: scale(1.05);
+    background: #3498db;
+    color: rgb(244, 252, 9);
+  }
+  
+  .bill-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  /* Booking Form */
+  .content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .content input,
+  .content button {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .content button {
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .content button:hover {
+    background: #219150;
+  }
+  
+  /* Carbon Calculator Form */
+  .content input {
+    width: 100%;
+  }
+  

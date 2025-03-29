@@ -4,8 +4,15 @@ import { FaGasPump, FaBolt, FaTint, FaCalendarCheck, FaLeaf, FaSignOutAlt } from
 import Booking from "../../components/Booking";
 import CarbonCalculator from '../../components/CarbonCalculator';
 
-const Dashboard = ({ onLogout }) => {
+const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');
+
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Remove auth token from localStorage
+    sessionStorage.removeItem("authToken"); // Remove auth token from sessionStorage
+    window.location.href = "/login"; // Redirect to login page
+  };
 
   const renderContent = () => {
     switch (activeSection) {
@@ -49,7 +56,7 @@ const Dashboard = ({ onLogout }) => {
         <button onClick={() => setActiveSection('overview')}>Overview</button>
         <button onClick={() => setActiveSection('booking')}><FaCalendarCheck /> Booking</button>
         <button onClick={() => setActiveSection('carbon')}><FaLeaf /> Carbon Calculator</button>
-        <button onClick={onLogout} className="logout"><FaSignOutAlt /> Logout</button>
+        <button onClick={handleLogout} className="logout"><FaSignOutAlt /> Logout</button>
       </aside>
       <main className="dashboard-content">{renderContent()}</main>
     </div>

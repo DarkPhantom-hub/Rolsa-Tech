@@ -1,46 +1,35 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate for redirection
-import './Login.css';
-import Logo from '../../components/Logo'; // Import the Logo component
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./Login.css";
+import Logo from "../../components/Logo";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
-  const [errors, setErrors] = useState({
-    email: '',
-    password: '',
-  });
-
-  const navigate = useNavigate(); // Hook to redirect after successful login
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const validateForm = () => {
     let valid = true;
-    let errors = { ...errors };
+    let errors = {};
 
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,6}$/;
-    if (!formData.email || !emailPattern.test(formData.email)) {
-      errors.email = 'Invalid email address';
+    if (!formData.email) {
+      errors.email = "Email is required";
       valid = false;
-    } else {
-      errors.email = '';
     }
 
     if (!formData.password) {
-      errors.password = 'Password is required';
+      errors.password = "Password is required";
       valid = false;
-    } else {
-      errors.password = '';
     }
 
     setErrors(errors);
@@ -52,62 +41,37 @@ const Login = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/");
-      } else {
-        alert(data.message);
-      }
+      const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Login failed", error);
+      alert(error.response?.data?.message || "Login failed");
     }
   };
 
   return (
     <div className="login-container">
       <div className="logo-container">
-        <Logo />  {/* Logo at the top */}
+        <Logo />
       </div>
       <h2 className="login-title">Log In</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email"
-          />
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" />
           {errors.email && <p className="error">{errors.email}</p>}
         </div>
 
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-          />
+          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter your password" />
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
 
         <button type="submit" className="btn">Log In</button>
       </form>
 
-      {/* Link to Register page */}
       <p className="register-link">
         Don't have an account? <Link to="/register" className="register-link-text">Click to Register</Link>
       </p>
