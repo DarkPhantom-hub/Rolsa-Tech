@@ -1,27 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from 'react';
+import './Dashboard.css';
+import { FaGasPump, FaBolt, FaTint, FaCalendarCheck, FaLeaf, FaSignOutAlt } from 'react-icons/fa';
+import Booking from "../../components/Booking";
+import CarbonCalculator from '../../components/CarbonCalculator';
 
-const Dashboard = () => {
-  const [user, setUser] = useState(null);
+const Dashboard = ({ onLogout }) => {
+  const [activeSection, setActiveSection] = useState('overview');
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'gas':
+        return <div className="content">Your Gas Bill: $120</div>;
+      case 'electricity':
+        return <div className="content">Your Electricity Bill: $90</div>;
+      case 'water':
+        return <div className="content">Your Water Bill: $60</div>;
+      case 'booking':
+        return <Booking />;
+      case 'carbon':
+        return <CarbonCalculator />;
+      default:
+        return (
+          <div className="content">
+            <h2>Welcome to Your Dashboard</h2>
+            <div className="bills-overview">
+              <div className="bill-card" onClick={() => setActiveSection('gas')}>
+                <FaGasPump className="icon" />
+                <p>Gas Bill: $120</p>
+              </div>
+              <div className="bill-card" onClick={() => setActiveSection('electricity')}>
+                <FaBolt className="icon" />
+                <p>Electricity Bill: $90</p>
+              </div>
+              <div className="bill-card" onClick={() => setActiveSection('water')}>
+                <FaTint className="icon" />
+                <p>Water Bill: $60</p>
+              </div>
+            </div>
+          </div>
+        );
     }
-  }, []);
-
-  if (!user) {
-    return <p>Please login to access the dashboard.</p>;
-  }
+  };
 
   return (
-    <div>
-      <h2>Welcome, {user.name}!</h2>
-      <ul>
-        <li><a href="/bills">Gas, Electricity, Water Bills</a></li>
-        <li><a href="/consultant">Book a Consultant</a></li>
-        <li><a href="/carbon">Carbon Footprint Calculator</a></li>
-      </ul>
+    <div className="dashboard-container">
+      <aside className="sidebar">
+        <h2>Dashboard</h2>
+        <button onClick={() => setActiveSection('overview')}>Overview</button>
+        <button onClick={() => setActiveSection('booking')}><FaCalendarCheck /> Booking</button>
+        <button onClick={() => setActiveSection('carbon')}><FaLeaf /> Carbon Calculator</button>
+        <button onClick={onLogout} className="logout"><FaSignOutAlt /> Logout</button>
+      </aside>
+      <main className="dashboard-content">{renderContent()}</main>
     </div>
   );
 };

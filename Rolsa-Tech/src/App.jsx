@@ -11,6 +11,9 @@ import Contact from './components/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Booking from './components/Booking/index';
+import CarbonCalculator from './components/CarbonCalculator/index';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'; // Import PrivateRoute
 
 const Layout = ({ children }) => (
   <>
@@ -23,11 +26,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Routes without Navbar */}
+        {/* Public Routes */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
-        {/* Routes with Navbar */}
         <Route
           path="/"
           element={
@@ -42,12 +43,18 @@ const App = () => {
             </Layout>
           }
         />
+
+        {/* Protected Route for Dashboard */}
         <Route
           path="/dashboard"
           element={
-            <Layout>
-              <Dashboard />
-            </Layout>
+            <PrivateRoute>
+              <Layout>
+                <Dashboard />
+                <Booking />
+                <CarbonCalculator />
+              </Layout>
+            </PrivateRoute>
           }
         />
       </Routes>

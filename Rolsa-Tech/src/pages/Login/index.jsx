@@ -28,7 +28,7 @@ const Login = () => {
     let valid = true;
     let errors = { ...errors };
 
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zAZ0-9]{2,6}$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,6}$/;
     if (!formData.email || !emailPattern.test(formData.email)) {
       errors.email = 'Invalid email address';
       valid = false;
@@ -47,13 +47,27 @@ const Login = () => {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
-    if (validateForm()) {
-      console.log('Login successful:', formData);
-      // Assuming login is successful, we redirect to the homepage
-      navigate('/'); // Redirect to the homepage or the page with the Navbar
+    try {
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Login failed", error);
     }
   };
 

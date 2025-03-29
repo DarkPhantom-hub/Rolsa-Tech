@@ -75,7 +75,7 @@ const About = () => {
 
                 <div className="buttons__container">
                     <Link to='project' smooth={true} className='btn'>Explore</Link>
-                    <Link to='contact' smooth={true} className='btn btn__primary'>Get A Quote</Link>
+                    <Link to='contact' smooth={true} className='btn btn__primary'>Get Started</Link>
                 </div>
             </div>
         </div>
