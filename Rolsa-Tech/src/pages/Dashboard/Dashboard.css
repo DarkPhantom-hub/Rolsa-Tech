@@ -3,26 +3,41 @@
     min-height: 100vh;
     display: flex;
     height: 100vh;
-    background: #f4f4f9;
-  }
-  
-  /* Sidebar Navigation */
-  .sidebar {
+    background: url('../../assets/background.jpg') no-repeat center center/cover;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 0;
+}
+
+.dashboard-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Adjust opacity as needed */
+    z-index: -1;
+}
+
+/* Sidebar Navigation */
+.sidebar {
     width: 250px;
     background: #2c3e50;
     color: white;
     padding: 20px;
     display: flex;
     flex-direction: column;
-  }
-  
-  .sidebar h2 {
+    justify-content: space-between;
+}
+
+.sidebar h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #219150;
-  }
-  
-  .sidebar button {
+    color: #27ae60;
+}
+
+.sidebar button {
     background: transparent;
     color: white;
     border: none;
@@ -33,26 +48,28 @@
     transition: 0.3s;
     display: flex;
     align-items: center;
-    margin-bottom: 100px; /* Add spacing between buttons */
+    gap: 10px;
+    margin-bottom: 50px; /* Add spacing between buttons */
 }
-  
-  .sidebar button:hover {
+
+.sidebar button:hover {
     background: #34495e;
-  }
-  
-  .sidebar .logout {
-    margin-top: auto;
+}
+
+.sidebar .logout {
     background: #e74c3c;
     text-align: center;
     border-radius: 5px;
-  }
-  
-  .sidebar .logout:hover {
+    padding: 12px;
+    margin-top: auto;
+}
+
+.sidebar .logout:hover {
     background: #c0392b;
-  }
-  
-  /* Main Dashboard Content */
-  .dashboard-content {
+}
+
+/* Main Dashboard Content */
+.dashboard-content {
     flex-grow: 1;
     padding: 30px;
     background: white;
@@ -62,76 +79,95 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-  }
-
-  /* Dashboard Title */
-.dashboard-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    background: linear-gradient(135deg, #3498db, #2e502c);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.818);
 }
-  
-  /* Bills Overview */
-  .bills-overview {
+
+/* Welcome Message */
+.welcome {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Bills Overview */
+.stats-container {
     display: flex;
     gap: 20px;
-  }
-  
-  .bill-card {
+    justify-content: center;
+}
+
+.bill-card {
     flex: 1;
     padding: 20px;
-    background: rgb(75, 226, 58);
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
-  }
-  
-  .bill-card:hover {
-    transform: scale(1.05);
-    background: #3498db;
-    color: rgb(244, 252, 9);
-  }
-  
-  .bill-card .icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
-  
-  /* Booking Form */
-  .content form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .content input,
-  .content button {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .content button {
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bill-card.paid {
     background: #27ae60;
     color: white;
-    cursor: pointer;
-  }
-  
-  .content button:hover {
-    background: #219150;
-  }
-  
-  /* Carbon Calculator Form */
-  .content input {
-    width: 100%;
-  }
-  
+}
+
+.bill-card.pending {
+    background: #f39c12;
+    color: white;
+}
+
+.bill-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.bill-card .status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+
+.status.paid {
+    color: #2ecc71;
+}
+
+.status.pending {
+    color: #e74c3c;
+}
+
+.bill-card:hover {
+    transform: scale(1.05);
+}
+
+/* Chart Container */
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%; /* Adjust width */
+    max-width: 800px; /* Limit maximum width */
+    margin: 0 auto; /* Center it */
+}
+
+.chart-container h2 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Gas and Water Icon Colors */
+.gas-icon {
+    color: #e74c3c; /* Red for Gas */
+}
+
+.water-icon {
+    color: #3498db; /* Blue for Water */
+}
