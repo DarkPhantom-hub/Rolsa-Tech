@@ -90,11 +90,11 @@ const Navbar = () => {
         {user ? (
           <div className="profile-container" ref={profileRef}>
             <button className="btn profile-btn" onClick={() => setProfileOpen(!profileOpen)}>
-              {user.name || "Profile"}
+              {user.name || "Profile"} ▼
             </button>
             {profileOpen && (
               <div className="dropdown-content">
-                <Link to="/dashboard" className='dropdown-item'>Dashboard</Link>
+                <Link to="/dashboard" className='dropdown-item' onClick={() => setProfileOpen(false)}>Dashboard</Link>
                 <button className='dropdown-item' onClick={handleLogout}>Logout</button>
               </div>
             )}
