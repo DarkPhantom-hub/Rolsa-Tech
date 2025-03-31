@@ -1,11 +1,14 @@
+// Navbar.jsx
+
 import React, { useState, useEffect, useRef } from 'react';
-import "./Navbar.css";
-import { navTabs } from "../../data";
-import { Link as ScrollLink } from 'react-scroll';
-import { Link, useNavigate } from 'react-router-dom';
-import { RiMenu3Fill } from 'react-icons/ri';
-import Logo from '../Logo';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link
 import { FaTimes } from 'react-icons/fa';
+import { RiMenu3Fill } from 'react-icons/ri';
+import { Link as ScrollLink } from 'react-scroll';
+import Logo from '../Logo';
+import { navTabs } from '../../data';
+import "./Navbar.css";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -20,8 +23,16 @@ const Navbar = () => {
     const fetchUser = () => {
       const token = localStorage.getItem("token");
       const storedUser = localStorage.getItem("user");
+
+      // Safely handle if there's no user in localStorage or invalid JSON
       if (token && storedUser) {
-        setUser(JSON.parse(storedUser));
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          setUser(parsedUser);
+        } catch (error) {
+          console.error("Error parsing user data from localStorage", error);
+          setUser(null);
+        }
       } else {
         setUser(null);
       }
@@ -52,7 +63,7 @@ const Navbar = () => {
     // Send a POST request to the backend to log out the user
     await fetch('/auth/logout', { method: 'POST' });
 
-    // After logging out, navigate to the homepage (or any route you want)
+    // After logging out, navigate to the login page
     navigate('/login');
   };
 
