@@ -42,11 +42,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLogout = () => {
+  // Logout function to clear tokens, user data, and make the logout request to the backend
+  const handleLogout = async () => {
+    // Clear user data from localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    navigate("/login");
+
+    // Send a POST request to the backend to log out the user
+    await fetch('/auth/logout', { method: 'POST' });
+
+    // After logging out, navigate to the homepage (or any route you want)
+    navigate('/login');
   };
 
   // Close dropdown if clicking outside
