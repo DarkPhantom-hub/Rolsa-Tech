@@ -1,1 +1,0 @@
-about section: Turning your vision into reality by focusing on the basics
