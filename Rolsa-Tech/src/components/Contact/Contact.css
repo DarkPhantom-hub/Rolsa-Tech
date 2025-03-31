@@ -1,0 +1,84 @@
+#contact {
+    position: relative;
+    overflow: hidden;
+}
+
+#contact .container {
+    display: grid;
+    grid-template-columns: 450px auto;
+    gap: 20px;
+    position: relative;
+    z-index: 3;
+}
+
+#contact .contact__info {
+    display: flex;
+    gap: 20px;
+    background: var(--color-ui-secondary);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius:  var(--radius-3);
+}
+
+#contact .contact__info .icon__container {
+    width: 4rem;
+    height: 4rem;
+    background: var(--color-ui-secondary);
+    font-size: 28px;
+}
+
+#contact .form__container .form__top {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#contact .form__container .form__top .sub__title {
+    margin-bottom: 15px;
+    font-size: 24px; /* Optional: Adjust font size */
+    font-weight: bold; /* Optional: Adjust font weight */
+    background: linear-gradient(to right, #012e0e, #0dff00); /* Dark green to light green */
+    -webkit-background-clip: text; /* For Safari */
+    background-clip: text; /* For modern browsers */
+    color: transparent; /* Makes the text transparent so the gradient shows through */
+}
+
+#contact .row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+#contact .control {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0; 
+    background: var(--color-ui-secondary);
+    border-radius: var(--radius-2);
+    color: var(--color-text);
+    font-size: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: solid 2px rgb(60, 60, 60);
+}
+
+#contact input {
+    height: 60px;
+}
+
+#contact .control:focus {
+    border-bottom: var(--color-primary);
+}
+
+#contact .form__container .form__bottom {
+    display: flex;
+    justify-content: center;
+}
+@media (max-width:900px) {
+    #contact .container {
+        grid-template-columns: 100%;
+    }
+    #contact .form__container {
+        padding: 20px;
+    }
+}
