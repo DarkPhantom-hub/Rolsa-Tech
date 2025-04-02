@@ -1,49 +1,111 @@
+/* Container Styling */
 .booking-container {
   background: #f4f4f4;
-  padding: 30px;
+  padding: 50px;
   border-radius: 15px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-  max-width: 50%;
-  margin: auto;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
 }
 
 h2 {
   color: #222;
   text-align: center;
-  font-size: 24px;
+  font-size: 36px;
+  margin-bottom: 30px;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  gap: 25px;
 }
 
 input, select, textarea {
-  margin-bottom: 15px;
-  padding: 12px;
+  padding: 18px;
   border: 1px solid #bbb;
-  border-radius: 7px;
+  border-radius: 8px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input[type="date"], input[type="time"] {
   font-size: 18px;
+}
+
+textarea {
+  font-size: 18px;
+  height: 150px;
+  resize: vertical;
+}
+
+select {
+  font-size: 20px;
 }
 
 button {
   background: #007bff;
   color: white;
-  padding: 12px;
+  padding: 18px;
   border: none;
-  border-radius: 7px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background: #0056b3;
 }
 
-.confirmation-message {
-  margin-top: 15px;
-  color: green;
+/* Confirmation and Error Message */
+.confirmation-message, .error-message {
+  margin-top: 25px;
   text-align: center;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
+  max-width: 100%;  /* Ensure message stays within container */
+  word-wrap: break-word; /* Break long words to avoid overflow */
+  overflow-wrap: break-word; /* Ensure wrapping of long text */
+  word-break: break-all; /* Force long words to break */
+  padding: 10px;  /* Add some padding around the text */
+  box-sizing: border-box;  /* Ensure padding doesn't affect container size */
+}
+
+.confirmation-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
+
+/* Additional Styling for Responsiveness */
+@media (max-width: 768px) {
+  .booking-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  input, select, textarea {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 14px;
+  }
+
+  .confirmation-message,
+  .error-message {
+    font-size: 20px;
+  }
 }

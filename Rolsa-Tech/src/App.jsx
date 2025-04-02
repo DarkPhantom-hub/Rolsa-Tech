@@ -10,9 +10,7 @@ import Project from './components/Project';
 import Contact from './components/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Booking from './components/Booking/index';
-import CarbonCalculator from './components/CarbonCalculator/index';
+import Dashboard from './pages/Dashboard';  // Importing Dashboard
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'; // Import PrivateRoute
 
 const Layout = ({ children }) => (
@@ -49,7 +47,7 @@ const App = () => {
           path="/dashboard"
           element={
             <PrivateRoute>
-                <Dashboard />
+              <Dashboard /> {/* Dashboard that includes Booking, Carbon Footprint, and EnergyUsage */}
             </PrivateRoute>
           }
         />

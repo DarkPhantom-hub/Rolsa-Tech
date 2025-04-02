@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import './Dashboard.css';
 import { FaGasPump, FaBolt, FaTint, FaCalendarCheck, FaLeaf, FaSignOutAlt, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
-import Booking from '../../components/Booking';
-import CarbonCalculator from '../../components/CarbonCalculator';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
+import Booking from '../../components/Booking';
+import CarbonCalculator from '../../components/CarbonCalculator';
+import EnergyUsage from '../../components/EnergyUsage';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');
-  const userName = "John Doe"; // Replace with dynamic user data
+  const userName = "John Doe";
 
-  // Sample usage data
+  // Usage Data for Chart
   const usageData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     datasets: [
@@ -35,6 +36,12 @@ const Dashboard = () => {
     ],
   };
 
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    sessionStorage.removeItem("authToken");
+    window.location.href = "/login";
+  };
+
   const renderContent = () => {
     switch (activeSection) {
       case 'gas':
@@ -47,6 +54,8 @@ const Dashboard = () => {
         return <Booking />;
       case 'carbon':
         return <CarbonCalculator />;
+      case 'energyUsage':
+        return <EnergyUsage />;
       default:
         return (
           <div className="content">
@@ -81,12 +90,11 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <aside className="sidebar">
         <h2>Dashboard</h2>
-        <button onClick={() => setActiveSection('overview')}>Overview</button>
-        <button onClick={() => setActiveSection('booking')}><FaCalendarCheck /> Booking</button>
-        <button onClick={() => setActiveSection('carbon')}><FaLeaf /> Carbon Calculator</button>
-        <button onClick={() => { localStorage.removeItem("authToken"); sessionStorage.removeItem("authToken"); window.location.href = "/login"; }} className="logout">
-          <FaSignOutAlt /> Logout
-        </button>
+        <button className={activeSection === 'overview' ? 'active' : ''} onClick={() => setActiveSection('overview')}>Overview</button>
+        <button className={activeSection === 'booking' ? 'active' : ''} onClick={() => setActiveSection('booking')}><FaCalendarCheck /> Booking</button>
+        <button className={activeSection === 'carbon' ? 'active' : ''} onClick={() => setActiveSection('carbon')}><FaLeaf /> Carbon Calculator</button>
+        <button className={activeSection === 'energyUsage' ? 'active' : ''} onClick={() => setActiveSection('energyUsage')}><FaBolt /> Energy Usage</button>
+        <button onClick={logout} className="logout"><FaSignOutAlt /> Logout</button>
       </aside>
       <main className="dashboard-content">{renderContent()}</main>
     </div>

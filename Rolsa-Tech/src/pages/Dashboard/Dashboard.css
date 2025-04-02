@@ -1,12 +1,10 @@
 /* Dashboard Container */
 .dashboard-container {
-    min-height: 100vh;
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     background: url('../../assets/background.jpg') no-repeat center center/cover;
     font-family: 'Poppins', sans-serif;
     position: relative;
-    z-index: 0;
 }
 
 .dashboard-container::before {
@@ -16,11 +14,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.7); /* Adjust opacity as needed */
+    background: rgba(255, 255, 255, 0.7);
     z-index: -1;
 }
 
-/* Sidebar Navigation */
+/* Sidebar */
 .sidebar {
     width: 250px;
     background: #2c3e50;
@@ -28,13 +26,12 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .sidebar h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: #27ae60;
+    margin-bottom: 20px;
 }
 
 .sidebar button {
@@ -49,17 +46,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 50px; /* Add spacing between buttons */
+    margin-bottom: 20px; /* Adjust this value to increase spacing */
 }
 
-.sidebar button:hover {
+.sidebar button:hover,
+.sidebar button.active {
     background: #34495e;
 }
 
 .sidebar .logout {
     background: #e74c3c;
-    text-align: center;
     border-radius: 5px;
+    text-align: center;
     padding: 12px;
     margin-top: auto;
 }
@@ -68,7 +66,7 @@
     background: #c0392b;
 }
 
-/* Main Dashboard Content */
+/* Main Content */
 .dashboard-content {
     flex-grow: 1;
     padding: 30px;
@@ -81,7 +79,6 @@
     gap: 30px;
 }
 
-/* Welcome Message */
 .welcome {
     font-size: 24px;
     font-weight: bold;
@@ -96,12 +93,14 @@
 /* Bills Overview */
 .stats-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
 
 .bill-card {
     flex: 1;
+    min-width: 250px;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -145,6 +144,8 @@
     transform: scale(1.05);
 }
 
+
+
 /* Chart Container */
 .chart-container {
     background: white;
@@ -152,9 +153,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 80%; /* Adjust width */
-    max-width: 800px; /* Limit maximum width */
-    margin: 0 auto; /* Center it */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .chart-container h2 {
@@ -163,11 +163,32 @@
     margin-bottom: 20px;
 }
 
-/* Gas and Water Icon Colors */
-.gas-icon {
-    color: #e74c3c; /* Red for Gas */
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
 
-.water-icon {
-    color: #3498db; /* Blue for Water */
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+    }
+
+    .sidebar button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .dashboard-content {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
