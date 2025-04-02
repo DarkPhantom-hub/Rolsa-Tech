@@ -9,11 +9,15 @@ function generateAccessToken(email)
     return jwt.sign({email},process.env.TOKEN_SECRET,{expiresIn:'1800s'});
 }
 
-function authenticateToken(authHeader)
-{
+function authenticateToken(authHeader) {
     dotenv.config();
     const token = authHeader && authHeader.split(' ')[1];
-    return jwt.verify(token, process.env.TOKEN_SECRET);
+
+    try {
+        return jwt.verify(token, process.env.TOKEN_SECRET);
+    } catch (error) {
+        return null; // Return null instead of crashing
+    }
 }
 
 function getEmailFromAuth(authHeader)
