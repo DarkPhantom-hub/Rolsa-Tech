@@ -48,7 +48,7 @@ export const teams = [
     ]
   },
   {
-    name:"Walter White",
+    name:"Chester Bennington",
     title:"Technician",
     profile:member2,
     social:[
