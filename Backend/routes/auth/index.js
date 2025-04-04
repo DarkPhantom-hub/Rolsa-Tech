@@ -9,7 +9,7 @@ const dbName = 'Rolsa';
 
 // Function to generate JWT token
 function generateAccessToken(email) {
-    return jwt.sign({ email }, "bce874d2b9ada9c8c30825eec00c67b446f784ff4f78767a483ed993f8d7f9af2ed8028797ae595ed9f18ea00d77ea9a3ac61c2fa98d504637f7ab7b1e9e4ba8", { expiresIn: "1h" });
+    return jwt.sign({ email }, "74af9c230b163bdf28d8b14f2b65ead1ae7b2feb7037a180d9be8c2cf582653f1ce39c74ac54a06558de8e4b835a430fa38c51229dab54737b9a2729b4f7fb9f", { expiresIn: "1h" });
 }
 
 // LOGIN ROUTE
@@ -18,7 +18,7 @@ router.post('/', async function(req, res) {
 
     try {
         await client.connect();
-        var database = client.db(Rolsa);
+        var database = client.db('Rolsa');
         var collection = database.collection('users');
 
         var { email, password } = req.body;
