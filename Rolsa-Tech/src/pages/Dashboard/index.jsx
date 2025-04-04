@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGasPump, FaBolt, FaTint, FaCalendarCheck, FaLeaf, FaSignOutAlt, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -9,9 +9,27 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');
-  const userName = "John Doe";
+  const [userName, setUserName] = useState('');
 
-  // Usage Data for Chart
+  useEffect(() => {
+    try {
+      const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
+      console.log("Stored user data:", storedUser); // Debugging
+  
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        console.log("Parsed user name:", parsedUser.name); // Debugging
+        setUserName(parsedUser.name || 'Guest');
+      } else {
+        setUserName('Guest');
+      }
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      setUserName('Customer');
+    }
+  }, []);
+  ;
+  
   const usageData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     datasets: [
@@ -38,7 +56,9 @@ const Dashboard = () => {
 
   const logout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
     sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("user");
     window.location.href = "/login";
   };
 
