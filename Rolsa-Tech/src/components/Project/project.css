@@ -1,63 +1,68 @@
-#project .title {
-     text-align: center;
- }
- 
- #project .projects__container {
-     display: grid;
-     grid-template-columns: repeat(3,1fr);
-     gap: 2.5;
- }
- 
- #project .project__card {
-     background: var(--color-ui-secondary);
-     padding: 25px;
-     border-radius: var(--radius-4);
-     transition: var(--transition);
- }
- 
- #project .project__card:hover img {
-     transform: scale(1.2);
- }
- 
- #project .project__card .image__container {
-     border-radius: var(--radius-4);
-     height: 230px;
-     overflow: hidden;
- }
- 
- #project .project__card .name {
-     font-size: 16px;
-     font-weight: 500;
-     margin: 20px;
- }
- 
- #project .project__card .buttons {
-     margin: 40px 0 20px 0;
- }
- 
- #project .project__card.zoom__in {
-     animation: zoomIn 600ms ease;
- }
- 
- @keyframes zoomIn {
-     0%{
-         scale: 0.5;
-     }
-     100% {
-         scale: 1;
-     }
- }
- 
- @media (max-width:1000px) {
-     #project .projects__container {
-         grid-template-columns: repeat(2,1fr);
-         gap: 1.2rem;
-     }
- }
- 
- @media (max-width:600px) {
-     #project .projects__container{
-         grid-template-columns: 100%;
-         gap: 1rem;
-     }
- }
+#project .project__heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+#project .project__heading span {
+    color: #00ff00; /* Green text for 'Projects' */
+}
+
+#project .projects__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding: 20px 0;
+}
+
+#project .project__card {
+    background: var(--color-ui-secondary);
+    padding: 25px;
+    border-radius: var(--radius-4);
+    transition: var(--transition);
+    text-align: center;
+}
+
+#project .project__card:hover img {
+    transform: scale(1.2);
+}
+
+#project .project__card .image__container {
+    border-radius: var(--radius-4);
+    height: 230px;
+    overflow: hidden;
+}
+
+#project .project__card .name {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px;
+}
+
+#project .project__card.zoom__in {
+    animation: zoomIn 600ms ease;
+}
+
+@keyframes zoomIn {
+    0% {
+        scale: 0.5;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+@media (max-width: 1000px) {
+    #project .projects__container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #project .projects__container {
+        grid-template-columns: 100%;
+        gap: 1rem;
+    }
+}
